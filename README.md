@@ -4,7 +4,7 @@ A suite of custom skills for [Figma Make](https://help.figma.com/hc/en-us/articl
 
 ## Philosophy
 
-> Make handles 0 → 1 visual design. Skills handle everything else.
+> Make handles 0 → 1 visual design, or builds from existing Figma designs. These skills are for the other satellite functions in your design processes.
 
 Make generates brand-and-layout output from prompts. These skills cover the disciplines that wrap that generation: scoping the work, applying domain-specific visual design (information, motion, narrative, interaction), reviewing and refining, and preparing for production handoff. The disciplines good teams want to do consistently — and skip when manual.
 
