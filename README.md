@@ -14,7 +14,7 @@ Make generates brand-and-layout output from prompts. These skills cover the disc
 |---|---|---|
 | **workflow** | Scoping the build | `/make-prompt`, `/ds-check` |
 | **design** | Applied visual design (not 0 → 1) | `/chart`, `/parallax`, `/hero`, `/microinteractions` |
-| **refine** | Review and refine the build | `/design-crit`, `/a11y-audit`, `/code-crit`, `/eval-set`, `/a11y-pass`, `/extract-tokens` |
+| **refine** | Review and refine the build | `/design-crit`, `/a11y-audit`, `/code-crit`, `/eval-set`, `/a11y-pass`, `/extract-tokens`, `/sr-spec`, `/ds-audit`, `/token-drift` |
 | **handoff** | Prep for export | `/handoff-spec`, `/handoff-prep` |
 
 ## Constraints (Figma Make)
@@ -52,6 +52,9 @@ intent
 /a11y-audit                         │  refine loop
 /code-crit                          │  (repeat as needed)
 /eval-set                           │
+/ds-audit                           │
+/token-drift                        │
+/sr-spec                            │
   │                                 │
   ▼                                 │
 /a11y-pass                          │
@@ -89,6 +92,9 @@ Design-tier skills (`/chart`, `/parallax`, `/hero`, `/microinteractions`) plug d
 - **`/a11y-audit`** — WCAG 2.2 AA audit with criterion references.
 - **`/code-crit`** — Types, structure, props, state, dependencies, naming.
 - **`/eval-set`** — Test plan: functional, edge cases, states, a11y, responsive, regression risks.
+- **`/ds-audit`** — DS drift audit (post-flight sibling to `/ds-check`).
+- **`/token-drift`** — Token drift detection against a reference token set.
+- **`/sr-spec`** — Screen reader specification: VoiceOver, TalkBack, and ARIA documentation.
 - **`/a11y-pass`** — Applies WCAG 2.2 AA fixes. Summary cites criteria.
 - **`/extract-tokens`** — Pulls color, spacing, type, radius, shadow, motion into `tokens.ts`.
 
@@ -105,6 +111,22 @@ Two contracts cross the suite:
 - **Manifest output** — `/handoff-prep` and `/handoff-spec` produce the same `HANDOFF.md`. Destination-side tools (Claude Code, Cursor with `figma-create-design-system-rules`) consume either output identically.
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full schema details.
+
+## Related work
+
+This suite operates inside **Figma Make** (single-`.md` custom skill format). It complements — and does not overlap with — the broader [Figma skills](https://www.figma.com/community/skills) ecosystem, which runs via the Figma MCP server and operates on the Figma canvas itself.
+
+The two halves form a round-trip:
+
+```
+codebase ──(community MCP skills)──► Figma file ──(Make)──► React ──(this suite)──► production
+```
+
+Several skills in this suite were inspired by community MCP skills but built as Make-side parallels:
+
+- `/sr-spec` ← inspired by `/create-voice` (Uber)
+- `/ds-audit` ← inspired by `/audit-design-system` (Edenspiekermann)
+- `/token-drift` ← inspired by `/sync-figma-token` (Firebender)
 
 ## Versioning
 

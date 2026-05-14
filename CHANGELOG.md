@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.3.1 — 2026-05-13
+
+- Added three refine-tier skills inspired by Figma Community MCP skills:
+  - `/sr-spec` — screen reader spec generator (inspired by Uber `/create-voice`)
+  - `/ds-audit` — DS drift audit, post-flight sibling to `/ds-check` (inspired by Edenspiekermann `/audit-design-system`)
+  - `/token-drift` — token drift detection (inspired by Firebender `/sync-figma-token`)
+- Added "Related work" section to README documenting the relationship to the broader Figma skills ecosystem.
+- Updated philosophy text per maintainer revision.
+
 ## v0.3 — 2026-05-13
 
 - **Four-tier model.** Replaced workflow / capability / handoff (with diagnose/transform sub-tiers) with **workflow / design / refine / handoff**.
